@@ -1,10 +1,17 @@
+import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { useRecoilValue } from 'recoil'
 import Header from '../components/header/header'
 import Row from '../components/main/row'
 import Banner from '../components/pages/Banner'
+import useAuth from '../hooks/useAuth'
 import { Movie } from '../typings'
 import requests from '../utils/requests'
+import { modalState, movieState } from '../atoms/modalAtom'
+import { Modal } from '../components/modal'
+import { Plants } from '../components/pages/Plants'
+import { useList } from '../hooks/use-list'
 
 interface Props {
   netflixOriginals: Movie[]
@@ -27,8 +34,23 @@ const Home = ({
   topRated,
   trendingNow,
 }: Props) => {
+  const { loading } = useAuth()
+  const showModal = useRecoilValue(modalState)
+  // const [showModal, setShowMoadal] = React.useState(false)
+  const subscription = false
+  const movie = useRecoilValue(movieState)
+  // const list = useList(user?.uid)
+
+  if (loading || subscription === null) return null
+
+  // if(!subscription) return <Plants/>
+
   return (
-    <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
+    <div
+      className={`relative h-screen bg-gradient-to-b lg:h-[140vh] ${
+        showModal && '!h-screen overflow-hidden'
+      }`}
+    >
       <Head>
         <title>Home - Netflix</title>
         <link rel="icon" href="/favicon.ico" />
@@ -47,6 +69,7 @@ const Home = ({
           <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
+      {showModal && <Modal />}
     </div>
   )
 }
