@@ -54,6 +54,7 @@ const Home = ({
       <Head>
         <title>Home - Netflix</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="google-site-verification" content="W4s1OyL3is3xClvEvWokqNNariZx-fpFmCNPirJCYZ0" />
       </Head>
       <Header />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
