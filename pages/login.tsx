@@ -65,6 +65,7 @@ const Login = () => {
       <Head>
         <title>Netflix</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="google-site-verification" content="W4s1OyL3is3xClvEvWokqNNariZx-fpFmCNPirJCYZ0" />
       </Head>
 
       <Toaster position="bottom-center" gutter={24} />
