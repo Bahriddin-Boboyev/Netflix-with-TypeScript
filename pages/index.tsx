@@ -77,7 +77,7 @@ const Home = ({
 
 export default Home
 
-export const getServerSideProps = async () => {
+export const getStaticProps  = async () => {
   const [
     netflixOriginals,
     trendingNow,
